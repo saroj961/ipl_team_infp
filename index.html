@@ -1,15 +1,41 @@
 <script>
-    localStorage.setItem("test","bunu");
-
-    var ls = localStorage.getItem("test");
-    console.log(ls);
-    alert(ls);
+  fetch('data/team.json',{
+    mode: 'no-cors',
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin":"*",
+      "Access-Control-Allow-Credentials":true
+    },
+  })
+  .then((resp) => resp.json())
+.then(function(response) {
+    console.info('fetch()', response);
+    return response;
+});
 </script>
 <html>
     <head>
         <title>IPL</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        Test
+        <div class="cards">
+          <div class="card">
+            <img class="card__image" src="https://fakeimg.pl/400x300/009578/fff/" alt="">
+            <div class="card__content">
+              <p>
+                Mumbai Indian
+              </p>
+              
+            </div>
+            <div class="card__info">
+              <div>
+                <a href="./" class="card__link">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
     </body>
 </html>
