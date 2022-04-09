@@ -1,42 +1,96 @@
-
+<!doctype html>
 <html>
-    <script>
-        fetch('data/team.json',{
-          mode: 'no-cors',
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin":"*",
-            "Access-Control-Allow-Credentials":true
-          },
-        })
-        .then((resp) => resp.json())
-      .then(function(response) {
-          console.info('fetch()', response);
-          return response;
-      });
-      </script>
     <head>
+      <script type="text/javascript" src="data"></script>
+      <meta charset="UTF-8">
         <title>IPL</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
+        <script>
+           var teamData = [
+    {
+        "id":1,
+        "name":"Mumbai Indians",
+        "logo":"mi.jpg",
+        "city":"Mumbai",
+        "title_won":4
+    },
+    {
+        "id":2,
+        "name":"Royal Challengers Bangalore",
+        "logo":"rcb.jpg",
+        "city":"Banglore",
+        "title_won":0
+    },
+    {
+        "id":3,
+        "name":"Chennai Super Kings",
+        "logo":"csk.jpg",
+        "city":"Chennai",
+        "tittle_won":3
+    },
+    {
+        "id":4,
+        "name":"Kolkata Knight Riders",
+        "logo":"kkr.jpg",
+        "city":"Kolkata",
+        "title_won":3
+    },
+    {
+        "id":5, 
+        "name":"Delhi Capitals",
+        "logo":"del.jpg",
+        "city":"Delhi",
+        "title_won":2
+    },
+    {
+        "id":6,
+        "name":"Punjab Kings",
+        "logo":"pnb.jpg",
+        "city":"Punjab",
+        "title_won":0
+    },
+    {
+        "id":7,
+        "name":"Rajasthan Royals",
+        "logo":"raja.jpg",
+        "city":"Rajasthan",
+        "title_won":1
+    },
+    {
+        "id":8,
+        "name":"Sunrisers Hyderabad",
+        "logo":"hyd.jpg",
+        "city":"Hyderabad",
+        "title_won":0
+    }
+]; 
+console.log(teamData);
+localStorage.setItem('team_info', JSON.stringify(teamData));
+        </script>
     </head>
     <body>
-        <div class="cards">
-          <div class="card">
-            <img class="card__image" src="https://fakeimg.pl/400x300/009578/fff/" alt="">
-            <div class="card__content">
-              <p>
-                Mumbai Indian
-              </p>
-              
-            </div>
-            <div class="card__info">
-              <div>
-                <a href="./" class="card__link">View Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="cards" id="all_team"></div>
     </body>
 </html>
+<script>
+var team_infos = localStorage.getItem('team_info');
+var responce = JSON.parse(team_infos);
+if(responce.length){
+              var allTeamStr = "";
+              responce.forEach(element => {
+                   allTeamStr+= '<div class="card">';
+                   allTeamStr+= '<img class="card__image" src='+'images/'+element.logo+' alt="">';
+                   allTeamStr+= '<div class="card__content">';
+                   allTeamStr+= '<p>'+element.name+'</p>';
+                   allTeamStr+= '</div>';
+                   allTeamStr+= '<div class="card__info"><div>';
+                   allTeamStr+= '<button onclick="teamDetails("dgdg")" class="card__link">View Details</button></div></div></div>';
+              });
+              document.getElementById("all_team").innerHTML = allTeamStr;
+            } 
+  function teamDetails(parram){
+     console.log(parram);
+     //window.location.href = "team-details.html";
+  }          
+</script>
