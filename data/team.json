@@ -1,0 +1,44 @@
+[
+    {
+        "name":"Mumbai Indians",
+        "logo":"mumbai.jpg",
+        "city":"Mumbai",
+        "title_won":4
+    },
+    {
+        "name":"Royal Challengers Bangalore",
+        "logo":"banglore.jpg",
+        "city":"Banglore",
+        "title_won":0
+    },
+    {
+        "name":"Chennai Super Kings",
+        "logo":"chennai.jpg",
+        "city":"Chennai",
+        "tittle_won":3
+    },
+    {
+        "name":"Kolkata Knight Riders",
+        "logo":"kolkata.jpg",
+        "city":"Kolkata",
+        "title_won":3
+    },
+    {
+        "name":"Delhi Capitals",
+        "logo":"delhi.jpg",
+        "city":"Delhi",
+        "title_won":2
+    },
+    {
+        "name":"Punjab Kings",
+        "logo":"punjab.jpg",
+        "city":"Punjab",
+        "title_won":0
+    },
+    {
+        "name":"Rajasthan Royals",
+        "logo":"rajasthan.jpg",
+        "city":"Rajasthan",
+        "title_won":1
+    }
+]
