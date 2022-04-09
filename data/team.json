@@ -40,5 +40,11 @@
         "logo":"rajasthan.jpg",
         "city":"Rajasthan",
         "title_won":1
+    },
+    {
+        "name":"Sunrisers Hyderabad",
+        "logo":"hyderabad.jpg",
+        "city":"Hyderabad",
+        "title_won":0
     }
 ]

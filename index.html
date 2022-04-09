@@ -1,20 +1,21 @@
-<script>
-  fetch('data/team.json',{
-    mode: 'no-cors',
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      "Access-Control-Allow-Origin":"*",
-      "Access-Control-Allow-Credentials":true
-    },
-  })
-  .then((resp) => resp.json())
-.then(function(response) {
-    console.info('fetch()', response);
-    return response;
-});
-</script>
+
 <html>
+    <script>
+        fetch('data/team.json',{
+          mode: 'no-cors',
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin":"*",
+            "Access-Control-Allow-Credentials":true
+          },
+        })
+        .then((resp) => resp.json())
+      .then(function(response) {
+          console.info('fetch()', response);
+          return response;
+      });
+      </script>
     <head>
         <title>IPL</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
