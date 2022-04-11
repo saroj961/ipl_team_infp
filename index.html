@@ -79,18 +79,22 @@ var responce = JSON.parse(team_infos);
 if(responce.length){
               var allTeamStr = "";
               responce.forEach(element => {
+                   console.log(element); 
                    allTeamStr+= '<div class="card">';
                    allTeamStr+= '<img class="card__image" src='+'images/'+element.logo+' alt="">';
                    allTeamStr+= '<div class="card__content">';
                    allTeamStr+= '<p>'+element.name+'</p>';
                    allTeamStr+= '</div>';
                    allTeamStr+= '<div class="card__info"><div>';
-                   allTeamStr+= '<button onclick="teamDetails("dgdg")" class="card__link">View Details</button></div></div></div>';
+                   allTeamStr+= '<button onclick="teamDetails(\'' + element.id + '\')" class="card__link">View Details</button></div></div></div>';
               });
               document.getElementById("all_team").innerHTML = allTeamStr;
             } 
-  function teamDetails(parram){
-     console.log(parram);
+  function teamDetails(teamid){
+     console.log(teamid);
      //window.location.href = "team-details.html";
+     localStorage.setItem("selectedTeam",teamid);
+     var getteam = localStorage.getItem("selectedTeam");
+     console.log(getteam);
   }          
 </script>
