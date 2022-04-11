@@ -66,3 +66,11 @@
 .card__link:hover {
     text-decoration: underline;
 }
+.player_image{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 10px auto;
+    border: 10px solid #ccc;
+    border-radius: 50%;
+}

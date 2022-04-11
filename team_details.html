@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>IPL 2022 Team Details</title>
+
+    <meta name="author" content="Codeconvey" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+
+    <!--Only for demo purpose - no need to add.-->
+    <link rel="stylesheet" href="css/demo.css" />
+    
+	    <link rel="stylesheet" href="css/style1.css">
+        <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+		
+<div class="ScriptTop">
+    <div class="rt-container">
+        <div class="col-rt-4" id="float-right">
+ 
+            <!-- Ad Here -->
+            
+        </div>
+        <div class="col-rt-2">
+            <ul>
+                <li><a href="index.html" title="Back to tutorial page">Team Details</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<header class="ScriptHeader">
+    <div class="rt-container">
+    	<div class="col-rt-12">
+        	<div class="rt-heading">
+            	<h1>IPL 2022</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="rt-container">
+          <div class="col-rt-12">
+              <div class="Scriptcontent">
+              
+<!-- Student Profile -->
+<div class="student-profile py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card shadow-sm" id="seleted_team">
+        </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="cards" id="all_team_palyer_list">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+           
+    		</div>
+		</div>
+    </div>
+</section>
+     
+
+
+    <!-- Analytics -->
+
+	</body>
+</html>
+<script>
+    //getTeamId : Which team is clicked
+    var getTeamId = localStorage.getItem("selectedTeam");
+    console.log(getTeamId);
+    var teamdetails = localStorage.getItem("team_info");
+    // console.log(teamdetails);
+    teamdetails = JSON.parse(teamdetails);
+    var selectedTeam = '';
+    var showPlayerList = '';
+    teamdetails.forEach(element => {
+        if(getTeamId == element.id){ //if selected team is same as loop id
+            console.log(element);
+            selectedTeam+='<div class="card-header bg-transparent text-center">';
+            selectedTeam+='<img class="profile_img" src='+'images/'+element.logo+' alt="student dp">';
+            selectedTeam+='<h3>'+element.name+'</h3></div>';
+            selectedTeam+='<div class="card-body">';
+            selectedTeam+='<p class="mb-0"><strong class="pr-1">Player Count :</strong>'+element.players.length+'</p>';
+            selectedTeam+='<p class="mb-0"><strong class="pr-1">Top Batsman : </strong >'+element.top_batsman+'</p>';
+            selectedTeam+='<p class="mb-0"><strong class="pr-1">Top Bolower : </strong>'+element.top_bolower+'</p>';
+            selectedTeam+='<p class="mb-0"><strong class="pr-1">Championship Won : </strong>'+element.Championship_won+'</p>';
+            selectedTeam+='</div>';
+
+            if(element.players.length){
+           console.log(element.players); 
+           
+           element.players.forEach(playerList => {
+            var playing = 'Not Palying';
+            if(playerList.isplaying){
+                playing = 'Playing';
+            }   
+            showPlayerList+='<div class="card"><img class="player_image" src="images/'+playerList.player_icon+'" alt="">';
+            showPlayerList+='<div class="card__content">';
+            showPlayerList+='<p> <label>Team : </label>'+element.name+'</p>'; 
+            showPlayerList+='<p> <label>Name : </label>'+playerList.playerName+'</p>';
+            showPlayerList+='<p> <label>Price : </label>'+playerList.price+'</p>';
+            showPlayerList+='<p> <label>Playing Status : </label>'+playing+'</p>';
+            showPlayerList+='<p> <label>Role : </label>'+playerList.description+'</p>';   
+            showPlayerList+='</div><div class="card__info"><div>';
+            showPlayerList+='<button onclick="playerDetails()" class="card__link">Player Details</button>';   
+            showPlayerList+='</div></div></div>';  
+           })        
+        }
+        }
+        document.getElementById("seleted_team").innerHTML = selectedTeam;
+        document.getElementById("all_team_palyer_list").innerHTML = showPlayerList;
+
+       
+    });
+</script>
