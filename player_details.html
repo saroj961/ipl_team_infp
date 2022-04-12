@@ -1,0 +1,58 @@
+<head>
+
+    <link rel="stylesheet" href="css/player_details.css">
+</head>
+
+<body class="profile-page">
+  
+
+<div class="container">
+    <div class="grid-7 element-animation">
+      
+      <div class="card color-card" id="player_details_info">
+      </div>
+    </div>
+  </div>
+  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+
+
+   
+
+</body>
+<script>
+    var teamList = localStorage.getItem("team_info");
+    teamList = JSON.parse(teamList);
+    
+    var selectedTeam = localStorage.getItem("selectedTeam");
+    var selectedPlayer = localStorage.getItem("selectedPlayer");
+
+    teamList.forEach(teamInfo => {
+       
+       if(selectedTeam == teamInfo.id){
+        console.log(teamInfo);
+        var playerDetails = '';
+        teamInfo.players.forEach(players => {
+            if(selectedPlayer == players.player_id && players.team_id == selectedTeam){
+                var playing = 'Not Palying';
+            if(players.isplaying){
+                playing = 'Playing';
+            }   
+               console.log(players); 
+               playerDetails+='<ul><li><a href="team_details.html"><i class="fas fa-arrow-left i-l w"></i></a></li></ul>';
+               playerDetails+='<img src="images/'+players.player_icon+'" alt="profile-pic" class="profile">';
+               playerDetails+='<h1 class="title">Player Details</h1>';
+               playerDetails+='<p class="job-title">Name : '+players.playerName+'</p>';
+               playerDetails+='<p class="job-title">Team : '+players.from+'</p>';
+               playerDetails+='<p class="job-title">Price : '+players.price+'</p>';
+               playerDetails+='<p class="job-title">Playing Status : '+playing+'</p>';
+               playerDetails+='<p class="job-title">Role : '+players.description+'</p>';
+            }
+        })
+        document.getElementById("player_details_info").innerHTML = playerDetails;
+       }  
+    })
+
+</script>
